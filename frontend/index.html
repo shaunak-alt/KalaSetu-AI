@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KalaSetu AI | Hackathon Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div id="toast">Copied to clipboard!</div>
+
+    <header class="bg-white/60 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-white/20">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-3xl font-bold gradient-text">KalaSetu AI (कलासेतु)</h1>
+                <p class="text-sm text-black-500 hidden md:block">From Local Hands to Global Hearts &lt;3 </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="glass-panel p-6">
+                <h2 class="text-3xl font-bold mb-6 font-heading gradient-text">Bring Your Art to Life</h2>
+                
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">1. Upload a clear photo of your product:</label>
+                    <div id="image-uploader-container">
+                        <div id="dropzone" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.158 0a.075.075 0 10-1.5 0 .075.075 0 001.5 0z" /></svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="image-upload" class="relative cursor-pointer bg-white/0 rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none">
+                                        <span>Upload a file</span>
+                                        <input id="image-upload" type="file" class="sr-only" accept="image/*">
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PNG, JPG up to 10MB</p>
+                            </div>
+                        </div>
+                        <div id="preview-container" class="mt-1 relative hidden">
+                            <img id="image-preview" class="rounded-lg shadow-lg w-full" alt="Image preview">
+                            <button id="remove-image-btn" class="absolute top-2 right-2 p-1.5 bg-white/70 hover:bg-white rounded-full text-gray-600 hover:text-gray-800 transition-all">
+                                <svg class="w-5 h-5" xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700">2. Describe your product's story:</label>
+                    <div class="mt-2">
+                        <div class="flex border-b border-gray-200">
+                            <div id="voice-tab" class="tab active">Record Voice</div>
+                            <div id="text-tab" class="tab">Type Story</div>
+                        </div>
+                        <div id="voice-input-container" class="pt-4">
+                            <div class="p-4 border border-white/30 rounded-b-md bg-white/20">
+                                <div class="flex items-center justify-between flex-wrap gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <button id="record-btn" class="p-3 bg-green-500 hover:bg-green-600 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z"></path><path fill-rule="evenodd" d="M5.5 8.5A.5.5 0 016 9v1a4 4 0 004 4h.01a4 4 0 004-4V9a.5.5 0 011 0v1a5 5 0 01-4.5 4.975V17h3a.5.5 0 010 1h-7a.5.5 0 010-1h3v-2.025A5 5 0 015 10V9a.5.5 0 01.5-.5z" clip-rule="evenodd"></path></svg></button>
+                                        <button id="stop-btn" class="p-3 bg-red-500 hover:bg-red-600 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 hidden transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a.5.5 0 01.5.5v5a.5.5 0 01-1 0v-5A.5.5 0 018 7zm4 0a.5.5 0 01.5.5v5a.5.5 0 01-1 0v-5A.5.5 0 0112 7z" clip-rule="evenodd"></path></svg></button>
+                                        <div id="recording-status" class="text-sm text-gray-600 hidden"><div class="flex items-center gap-2"><span class="w-3 h-3 bg-red-500 rounded-full recording-indicator"></span>Recording...</div></div>
+                                    </div>
+                                    <select id="language-select" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                        <option value="en-US">English (US)</option><option value="hi-IN">Hindi (India)</option><option value="bn-IN">Bengali (India)</option><option value="ta-IN">Tamil (India)</option><option value="te-IN">Telugu (India)</option>
+                                    </select>
+                                </div>
+                                <audio id="audio-playback" controls class="hidden w-full mt-4"></audio>
+                            </div>
+                        </div>
+                        <div id="text-input-container" class="pt-4 hidden">
+                            <textarea id="story-input" rows="8" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2 bg-white/50" placeholder="e.g., 'This is a clay pot called 'Mitti'. I made it from river clay...'"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="generate-btn" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:from-gray-400 disabled:to-gray-400 transition-all duration-300 hover:scale-105 disabled:scale-100">Create Magic ✨</button>
+            </div>
+
+            <div id="output-area" class="glass-panel p-6">
+                <h2 id="results-header" class="text-3xl font-bold mb-6 font-heading gradient-text hidden">Your Digital Showcase</h2>
+                
+                <div id="loading-container" class="text-center py-10 hidden">
+                    <div class="spinner-wrapper mx-auto"></div>
+                    <p id="loading-status" class="mt-4 text-sm text-gray-600 font-medium">Initializing...</p>
+                    <div class="mt-2 text-xs text-gray-400">This may take up to a minute.</div>
+                </div>
+
+                <div id="placeholder" class="text-center text-gray-400 py-20"><p>Your generated assets will appear here.</p></div>
+                <div id="results-container" class="space-y-6"></div>
+                <div id="error-container" class="text-center py-10 hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Oops!</strong>
+                    <span class="block sm:inline" id="error-message">Something went wrong.</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
