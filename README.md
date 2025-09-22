@@ -3,11 +3,10 @@
 KalaSetu AI is a full-stack web application designed to empower local artisans by generating professional marketing assets using generative AI. Artisans can upload a photo of their product and share its story, and the app will create a product title, a compelling narrative, social media captions, and AI-generated lifestyle photos.
 
 ![Screenshot of KalaSetu AI App](./app_interface.png)
-*(Suggestion: Add a screenshot of your app here)*
 
 ---
 
-## ## Features
+## Features
 
 * **Secure Full-Stack Architecture:** Client-server model with a Python (FastAPI) back-end to protect API keys.
 * **AI-Powered Text Generation:** Uses Google's Gemini Pro to create titles, stories, and social media captions.
@@ -16,7 +15,7 @@ KalaSetu AI is a full-stack web application designed to empower local artisans b
 
 ---
 
-## ## Tech Stack
+## Tech Stack
 
 * **Front-End:** HTML, Tailwind CSS, Vanilla JavaScript
 * **Back-End:** Python, FastAPI
@@ -26,7 +25,7 @@ KalaSetu AI is a full-stack web application designed to empower local artisans b
 
 ---
 
-## ## Setup and Installation
+## Setup and Installation
 
 To run this project locally, follow these steps:
 
